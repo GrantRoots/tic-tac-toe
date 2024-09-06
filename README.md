@@ -1,1 +1,2 @@
 # tic-tac-toe
+This is a project I made using html, css, and javascript. The user or users can push a button to start the tic tac toe game. Then they can click on each square to put either an X or an O. They can reset the game by clicking a button and they can add names to the players by clicking the button that will show a dialog pop up and inputs to type the names.
