@@ -236,3 +236,30 @@ const startButton = document.querySelector('.start')
 startButton.addEventListener('click', () => {
     game.playGame()
 })
+
+const addNames = document.getElementById("addNames");
+const nameDialog = document.getElementById("nameDialog");
+const outputBox = document.querySelector("output");
+
+const Odiv = document.querySelector('.nameO')
+const Xdiv = document.querySelector('.nameX')
+
+const nameX = nameDialog.querySelector("#nameX");
+const nameO = nameDialog.querySelector("#nameO");
+
+const confirmBtn = nameDialog.querySelector("#confirmBtn");
+
+addNames.addEventListener("click", () => {
+  nameDialog.showModal();
+});
+
+nameDialog.addEventListener("close", (e) => {
+  nameDialog.close()
+});
+
+confirmBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  Odiv.textContent = nameO.value
+  Xdiv.textContent = nameX.value
+  nameDialog.close();
+});
