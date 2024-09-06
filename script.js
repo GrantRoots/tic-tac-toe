@@ -23,7 +23,6 @@ function Gameboard() {
                 return winner = true
             }
         }
-        //added 1
         for (let i = 3; i <= 6; i++) {
             if (board[i] === 'X') {}
             else {break}
@@ -188,9 +187,9 @@ function gameController() {
     };
 
     const playGame = () => {
-        let round = 0
+        let round = 1
 
-        const tile = document.querySelectorAll('.tile').forEach(tile => 
+        const tiles = document.querySelectorAll('.tile').forEach(tile => 
             tile.addEventListener('click', () => {
                 if (typeof board.board[tile.id] !== 'string') {
                     tile.textContent = activePlayer.symbol
@@ -198,14 +197,14 @@ function gameController() {
                     switchPlayerTurn();
                 }
                 board.checkWinner()
-                if (board.winner === true) {
+                if (board.checkWinner() === true) {
                     return
                 }
                 if (activePlayer.symbol === 'X') {
                     round++
                     console.log(round)
                 }
-                if (round === 4 && activePlayer.symbol === 'O' && board.winner === false) {
+                if (round === 5 && activePlayer.symbol === 'O' && board.winner === false) {
                     console.log('game over its a tie')
                 }
             })
@@ -216,15 +215,14 @@ function gameController() {
         playGame
     }
 }
-
-function ScreenController() {
-    const game = gameController()
-}
-
 const game = gameController()
-game.playGame()
 
+const startButton = document.querySelector('.start')
+startButton.addEventListener('click', () => {
+    game.playGame()
+})
 
-// have an array of 9 items(0-8)
-// for html set 9 boxes equal to each array item (boxes should be buttons)
-// if the certain boxes all contain an x / o then one person wins and their score++
+const resetButton = document.querySelector('.reset')
+resetButton.addEventListener('click', () => {
+    game.playGame()
+})
