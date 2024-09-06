@@ -1,5 +1,5 @@
 function Gameboard() {
-    const board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     let winner = false
 
@@ -159,16 +159,22 @@ function Gameboard() {
         }
     }
     winner = checkWinner()
+
+    const resetBoard = () => {
+        board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+
     return {selectTile, 
             checkWinner, 
             winner,
-            board
+            board,
+            resetBoard
     }
 }
 
 function gameController() {
 
-    const board = Gameboard()
+    let board = Gameboard()
 
     const players = [
         {
@@ -196,13 +202,13 @@ function gameController() {
                     board.selectTile(tile.id, activePlayer.symbol)
                     switchPlayerTurn();
                 }
+                console.log(board.board)
                 board.checkWinner()
                 if (board.checkWinner() === true) {
                     return
                 }
                 if (activePlayer.symbol === 'X') {
                     round++
-                    console.log(round)
                 }
                 if (round === 5 && activePlayer.symbol === 'O' && board.winner === false) {
                     console.log('game over its a tie')
@@ -210,6 +216,15 @@ function gameController() {
             })
         )
     }
+
+    const resetButton = document.querySelector('.reset')
+        resetButton.addEventListener('click', () => {
+            board.resetBoard()
+            board = Gameboard()
+            const tiles = document.querySelectorAll('.tile').forEach(tile => 
+                tile.textContent = ''
+            )
+    })
 
     return {
         playGame
@@ -219,10 +234,5 @@ const game = gameController()
 
 const startButton = document.querySelector('.start')
 startButton.addEventListener('click', () => {
-    game.playGame()
-})
-
-const resetButton = document.querySelector('.reset')
-resetButton.addEventListener('click', () => {
     game.playGame()
 })
