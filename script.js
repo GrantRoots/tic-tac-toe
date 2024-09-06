@@ -4,7 +4,7 @@ function Gameboard() {
     let winner = false
 
     const selectTile = (tile, symbol) => {
-        if (board[tile] === 0) {
+        if (typeof board[tile] !== "string") {
             board.splice(tile, 1, symbol)
             console.log(board)
         }
@@ -15,119 +15,156 @@ function Gameboard() {
 
     const checkWinner = () => {
         //horizontal row X
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i <= 2; i++) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 2) {
+                console.log('X wins')
+                return winner = true
+            }
         }
-        for (let i = 3; i < 5; i++) {
+        //added 1
+        for (let i = 3; i <= 6; i++) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 6) {
+                console.log('X wins')
+                return winner = true
+            }
         }
-        for (let i = 6; i < 8; i++) {
+        for (let i = 6; i <= 8; i++) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 8) {
+                console.log('X wins')
+                return winner = true
+            }
         }
 
         // horizontal row O
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i <= 2; i++) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 2) {
+                console.log('O wins')
+                return winner = true
+            }
         }
-        for (let i = 3; i < 5; i++) {
+        for (let i = 3; i <= 5; i++) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 5) {
+                console.log('O wins')
+                return winner = true
+            }
         }
-        for (let i = 6; i < 8; i++) {
+        for (let i = 6; i <= 8; i++) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 8) {
+                console.log('O wins')
+                return winner = true
+            }
         }
 
         //vertical row X
-        for (let i = 0; i < 6; i += 3) {
+        for (let i = 0; i <= 6; i += 3) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 6) {
+                console.log('X wins')
+                return winner = true
+            }
         }
-        for (let i = 1; i < 7; i += 3) {
+        for (let i = 1; i <= 7; i += 3) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 7) {
+                console.log('X wins')
+                return winner = true
+            }
         }
-        for (let i = 2; i < 8; i += 3) {
+        for (let i = 2; i <= 8; i += 3) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 8) {
+                console.log('X wins')
+                return winner = true
+            }
         }
 
         //vertical row O
-        for (let i = 0; i < 6; i += 3) {
+        for (let i = 0; i <= 6; i += 3) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 6) {
+                console.log('O wins')
+                return winner = true
+            }
         }
-        for (let i = 1; i < 7; i += 3) {
+        for (let i = 1; i <= 7; i += 3) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 7) {
+                console.log('O wins')
+                return winner = true
+            }
         }
-        for (let i = 2; i < 8; i += 3) {
+        for (let i = 2; i <= 8; i += 3) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 8) {
+                console.log('O wins')
+                return winner = true
+            }
         }
 
         //diagonal down right X
-        for (let i = 0; i < 8; i += 4) {
+        for (let i = 0; i <= 8; i += 4) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 8) {
+                console.log('X wins')
+                return winner = true
+            }
         }
 
         //diagonal down right O
-        for (let i = 0; i < 8; i += 4) {
+        for (let i = 0; i <= 8; i += 4) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 8) {
+                console.log('O wins')
+                return winner = true
+            }
         }
 
         //diagonal down left X
-        for (let i = 2; i < 6; i += 2) {
+        for (let i = 2; i <= 6; i += 2) {
             if (board[i] === 'X') {}
             else {break}
-            console.log('X wins')
-            return winner = true
+            if (i === 6) {
+                console.log('X wins')
+                return winner = true
+            }
         }
 
         //diagonal down left O
-        for (let i = 2; i < 6; i += 2) {
+        for (let i = 2; i <= 6; i += 2) {
             if (board[i] === 'O') {}
             else {break}
-            console.log('O wins')
-            return winner = true
+            if (i === 6) {
+                console.log('O wins')
+                return winner = true
+            }
         }
     }
     winner = checkWinner()
-    return {selectTile, checkWinner, winner}
+    return {selectTile, 
+            checkWinner, 
+            winner,
+            board
+    }
 }
 
 function gameController() {
@@ -150,37 +187,40 @@ function gameController() {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
     };
 
-    const playRound = () => {
-        //let xtile = prompt('X')
-        board.selectTile(4, activePlayer.symbol)
-        board.checkWinner()
-        if (board.winner === true) {return}
-
-        switchPlayerTurn();
-
-        //let oTile = prompt('O')
-        board.selectTile(5, activePlayer.symbol)
-        board.checkWinner()
-        if (board.winner === true) {return}
-    };
-
     const playGame = () => {
-        let round = 1
-        for (; round < 5; round++) {
-            console.log(round)
-            playRound()
-            if (board.winner === true) {break}
-        }
-        if (round === 5) {
-            console.log('its a tie')
-        }
+        let round = 0
+
+        const tile = document.querySelectorAll('.tile').forEach(tile => 
+            tile.addEventListener('click', () => {
+                if (typeof board.board[tile.id] !== 'string') {
+                    tile.textContent = activePlayer.symbol
+                    board.selectTile(tile.id, activePlayer.symbol)
+                    switchPlayerTurn();
+                }
+                board.checkWinner()
+                if (board.winner === true) {
+                    return
+                }
+                if (activePlayer.symbol === 'X') {
+                    round++
+                    console.log(round)
+                }
+                if (round === 4 && activePlayer.symbol === 'O' && board.winner === false) {
+                    console.log('game over its a tie')
+                }
+            })
+        )
     }
 
     return {
-        playRound,
         playGame
     }
 }
+
+function ScreenController() {
+    const game = gameController()
+}
+
 const game = gameController()
 game.playGame()
 
