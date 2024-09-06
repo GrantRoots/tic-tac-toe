@@ -202,7 +202,6 @@ function gameController() {
                     board.selectTile(tile.id, activePlayer.symbol)
                     switchPlayerTurn();
                 }
-                console.log(board.board)
                 board.checkWinner()
                 if (board.checkWinner() === true) {
                     return
